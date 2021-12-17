@@ -11,7 +11,7 @@ import (
 	"errors"
 	"strconv"
 	"strings"
-	"flag"
+
 	"golang.org/x/net/dns/dnsmessage"
 
 	"encoding/json"
@@ -30,17 +30,9 @@ type DdnsUser struct {
 }
 
 type JArrsy []gjson.Result
-var fdmnsFile = flag.String("-fd", "dmns.json", "域名解析文件名")
-var fuserFile = flag.String("-fu", "user.json", "用户管理文件名")
-var dmnsFile string 
-var userFile string 
 
-func init() {
-
-	flag.Parse()
-	dmnsFile = *fdmnsFile
-	userFile = *fuserFile
-}
+var dmnsFile string = "dmns.json"
+var userFile string = "user.json"
 
 //把一个[]gjson.Result转为json字符串
 func (ja JArrsy) String() string {
@@ -386,4 +378,4 @@ func findUserIndex(u *DdnsUser, userName string) int {
 		}
 	}
 	return -1
-}
+} 
