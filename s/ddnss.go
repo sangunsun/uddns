@@ -141,7 +141,7 @@ func handleUserConn(conn *net.TCPConn) {
 		userName = gjson.Get(userStr, "userName").String()
 		password = gjson.Get(userStr, "password").String()
 
-		dmns, ok, oldIP := checkUser("user.json", userName, password)
+		dmns, ok, oldIP := checkUser(userFile, userName, password)
 		fmt.Println("dmns:", dmns, "oldip:", oldIP)
 
 		if !ok {
